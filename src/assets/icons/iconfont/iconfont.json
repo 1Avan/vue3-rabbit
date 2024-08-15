@@ -1,0 +1,51 @@
+{
+  "id": "4654342",
+  "name": "rabbit",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "小兔鲜儿",
+  "glyphs": [
+    {
+      "icon_id": "109717",
+      "name": "answer",
+      "font_class": "answer",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "109718",
+      "name": "app",
+      "font_class": "app",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "109719",
+      "name": "browser",
+      "font_class": "browser",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "109723",
+      "name": "cart",
+      "font_class": "cart",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "109785",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "109788",
+      "name": "shopping",
+      "font_class": "shopping",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    }
+  ]
+}
