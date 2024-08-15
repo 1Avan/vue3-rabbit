@@ -8,7 +8,7 @@
       <!-- app头部导航 -->
       <div class="app-header-nav">
         <!-- 动态获取导航栏内容 -->
-        <li v-for="item in categoryList" :key="item.id">
+        <li v-for="item in categoryStore.categoryList" :key="item.id">
              <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
       </div>
@@ -24,15 +24,18 @@
 <script setup >
 import { getCategoryAPI } from '@/apis/layout'
 import { onMounted, ref } from 'vue'
+import {useCategoryStore} from '@/stores/category.js'
+const categoryStore = useCategoryStore()
 
-const categoryList = ref([])
-const getCategory = async () => {
-    const res = await getCategoryAPI()
-    categoryList.value = res.result
-    console.log(res)
-}
+// 优化：现在由pinia获取数据
+// const categoryList = ref([])
+// const getCategory = async () => {
+//     const res = await getCategoryAPI()
+//     categoryList.value = res.result
+//     console.log(res)
+// }
 
-onMounted(() => getCategory())
+// onMounted(() => getCategory())
 </script>
 <style scoped lang="scss">
 .layout-header {

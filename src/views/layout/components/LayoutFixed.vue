@@ -1,17 +1,11 @@
 <script setup>
-import { useScroll } from "@vueuse/core";
+import { useScroll } from "@vueuse/core";//获取滚动信息的小工具npm i @vueuse/core
 const { y } = useScroll(window);
 import { getCategoryAPI } from "@/apis/layout";
-import { onMounted, ref } from "vue";
-
-const categoryList = ref([]);
-const getCategory = async () => {
-  const res = await getCategoryAPI();
-  categoryList.value = res.result;
-  console.log(res);
-};
-
-onMounted(() => getCategory());
+import {useCategoryStore} from "@/stores/category.js";
+import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
+const {categoryList} = storeToRefs(useCategoryStore())
 </script>
 
 <template>
@@ -48,6 +42,7 @@ onMounted(() => getCategory());
   transform: translateY(-100%);
   opacity: 0;
 
+    //&表示 .外层类 .当前类
   // 状态二：移除平移 + 完全不透明
   &.show {
     transition: all 0.3s linear;
