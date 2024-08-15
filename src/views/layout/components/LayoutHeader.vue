@@ -7,12 +7,10 @@
       </div>
       <!-- app头部导航 -->
       <div class="app-header-nav">
-        <li class="home">
-          <RouterLink to="/">首页</RouterLink>
+        <!-- 动态获取导航栏内容 -->
+        <li v-for="item in categoryList" :key="item.id">
+             <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
-        <li><RouterLink to="/">居家</RouterLink></li>
-        <li><RouterLink to="/">美食</RouterLink></li>
-        <li><RouterLink to="/">服饰</RouterLink></li>
       </div>
       <!-- 搜索框 -->
       <div class="search">
@@ -24,6 +22,17 @@
   </header>
 </template>
 <script setup >
+import { getCategoryAPI } from '@/apis/layout'
+import { onMounted, ref } from 'vue'
+
+const categoryList = ref([])
+const getCategory = async () => {
+    const res = await getCategoryAPI()
+    categoryList.value = res.result
+    console.log(res)
+}
+
+onMounted(() => getCategory())
 </script>
 <style scoped lang="scss">
 .layout-header {
