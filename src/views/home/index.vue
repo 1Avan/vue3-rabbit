@@ -17,4 +17,5 @@ import homeProduct from './components/HomeProduct.vue'
 </template>
 
 <style scoped lang="scss">
+
 </style>
