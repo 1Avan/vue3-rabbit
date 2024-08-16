@@ -21,3 +21,12 @@ export function getHotAndGoodAPI(params) {
         params
     })
 }
+
+/**
+ *获取商品模块Product
+ */
+ export const getGoodsAPI = () => {
+    return httpInstance({
+        url: '/home/goods'
+    })
+}

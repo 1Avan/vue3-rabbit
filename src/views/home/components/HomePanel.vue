@@ -14,8 +14,8 @@
 </template>
 <script setup >
 defineProps({
-    title:{type:String},
-    subTitle:{type:String}
+    title:{type:String},// 支持字符串
+    subTitle:{type:String}// 支持字符串
 })
 </script>
 <style scoped lang="scss">
