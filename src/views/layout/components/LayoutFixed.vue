@@ -15,7 +15,7 @@ const {categoryList} = storeToRefs(useCategoryStore())
       <!-- 导航区域 -->
       <ul class="app-header-nav">
         <li class="home" v-for="item in categoryList">
-          <RouterLink to="/">{{ item.name }}</RouterLink>
+          <RouterLink :to="`/category/${item.id}`" active-class="active">{{ item.name }}</RouterLink>
         </li>
       </ul>
       <div class="right">

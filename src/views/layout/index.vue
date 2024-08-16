@@ -2,7 +2,8 @@
   <LayoutNavVue></LayoutNavVue>
   <LayoutHeaderVue></LayoutHeaderVue>
   <!-- 二级路由出口 -->
-  <router-view></router-view>
+  <!-- 不复用组件实例，强制销毁 -->
+  <router-view :key="$route.fullPath"></router-view>
   <LayoutFooterVue></LayoutFooterVue>
   <LayoutFixed></LayoutFixed>
 </template>

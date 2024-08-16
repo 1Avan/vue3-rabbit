@@ -9,7 +9,9 @@
       <div class="app-header-nav">
         <!-- 动态获取导航栏内容 -->
         <li v-for="item in categoryStore.categoryList" :key="item.id">
-             <RouterLink to="/">{{ item.name }}</RouterLink>
+          <RouterLink :to="`/category/${item.id}`" activeClass="active">{{
+            item.name
+          }}</RouterLink>
         </li>
       </div>
       <!-- 搜索框 -->
@@ -22,10 +24,10 @@
   </header>
 </template>
 <script setup >
-import { getCategoryAPI } from '@/apis/layout'
-import { onMounted, ref } from 'vue'
-import {useCategoryStore} from '@/stores/category.js'
-const categoryStore = useCategoryStore()
+import { getCategoryAPI } from "@/apis/layout";
+import { onMounted, ref } from "vue";
+import { useCategoryStore } from "@/stores/category.js";
+const categoryStore = useCategoryStore();
 
 // 优化：现在由pinia获取数据
 // const categoryList = ref([])
@@ -65,6 +67,10 @@ const categoryStore = useCategoryStore()
     flex: 1;
     display: flex;
     justify-content: space-between;
+    .active {
+      color: $xtxColor;
+      border-bottom: 1px solid $xtxColor;
+    }
     li {
       list-style: none;
     }
