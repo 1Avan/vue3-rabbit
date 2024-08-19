@@ -32,6 +32,14 @@ httpInstance.interceptors.response.use(res=>{
         type: 'warning',
         message:e.response.data.message
     })
+    //处理401无权限
+    const userStore = useUserStore()
+    if(e.response.status === 401){
+        //清空数据
+        userStore.clearData()
+        //跳转到登录页
+        router.push('/login')
+    }
     return Promise.reject(e)
 }
 )
