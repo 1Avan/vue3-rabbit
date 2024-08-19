@@ -73,7 +73,7 @@
                 </dl>
               </div>
               <!-- sku组件 -->
-
+              <XtxSku :goods="goodDetail" @change="skuChange"></XtxSku>
               <!-- 数据组件 -->
 
               <!-- 按钮组件 -->
@@ -124,7 +124,6 @@
   </div>
 </template>
 <script setup >
-import ImageView from "@/components/ImageView.vue";
 import DetailHot from "./components/DetailHot.vue";
 import { getDetailAPI } from "@/apis/detail.js";
 import { onMounted, ref } from "vue";
@@ -132,6 +131,10 @@ import { useRoute, useRouter } from "vue-router";
 let route = useRoute();
 const goodDetail = ref({});
 
+function skuChange(sku){
+  console.log(sku);
+  
+}
 const getDetail = async () => {
   let res = await getDetailAPI(route.params.id);
   goodDetail.value = res.result;
