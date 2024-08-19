@@ -6,6 +6,10 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import vue from '@vitejs/plugin-vue'
 export default defineConfig({
+  server: {
+    host: '0.0.0.0', // 配置项目可以局域网访问
+    cors: true, // 默认启用并允许任何源
+  },
   plugins: [
     AutoImport({
       resolvers: [ElementPlusResolver()],
@@ -13,7 +17,7 @@ export default defineConfig({
     Components({
       resolvers: [
         // 1.配置elementPlus采用sass样式配色系统
-        ElementPlusResolver({importStyle:"sass"})
+        ElementPlusResolver({ importStyle: "sass" })
       ],
     }),
     vue(),

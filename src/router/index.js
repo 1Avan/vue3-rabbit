@@ -2,6 +2,12 @@ import { createRouter, createWebHistory } from 'vue-router'
 import layout from '@/views/layout/index.vue'
 
 const router = createRouter({
+  //路由滚动行为定制
+  scrollBehavior() {
+    return {
+      top: 0
+    }
+  },
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
@@ -19,6 +25,14 @@ const router = createRouter({
           path: '/category/:id',
           name: 'category',
           component: () => import('@/views/category/index.vue')
+        },
+        {
+          path: 'category/sub/:id',
+          component: () => import('@/views/subCategory/index.vue')
+        },
+        {
+          path: 'detail/:id',
+          component: () => import('@/views/detail/index.vue')
         }
       ]
     },
@@ -30,5 +44,7 @@ const router = createRouter({
     }
   ]
 })
+
+
 
 export default router
