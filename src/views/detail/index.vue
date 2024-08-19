@@ -21,7 +21,10 @@
                 :key="img"
                 alt=""
               /> -->
-              <ImageView v-if="goodDetail.mainPictures?.length>0"  :imageList="goodDetail.mainPictures"></ImageView>
+              <ImageView
+                v-if="goodDetail.mainPictures?.length > 0"
+                :imageList="goodDetail.mainPictures"
+              ></ImageView>
               <!-- 统计数量 -->
               <ul class="goods-sales">
                 <li>
@@ -89,23 +92,30 @@
                 <div class="goods-detail">
                   <!-- 属性 -->
                   <ul class="attrs">
-                    <li v-for="item in goodDetail.specs" :key="item.value">
+                    <li
+                      v-for="item in goodDetail.details?.properties"
+                      :key="item.value"
+                    >
                       <span class="dt">{{ item.name }}</span>
-                      <span class="dd">{{
-                        item.values.map((item) => item.name).join(",")
-                      }}</span>
+                      <span class="dd">{{ item.value }}</span>
                     </li>
                   </ul>
                   <!-- 图片 -->
+                  <img
+                    v-for="img in goodDetail.details?.pictures"
+                    :src="img"
+                    :key="img"
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
             <!-- 24热榜+专题推荐 -->
             <div class="goods-aside">
               <!-- 24小时 -->
-              <DetailHot hotType='1'/>
+              <DetailHot hotType="1" />
               <!-- 周日 -->
-              <DetailHot hotType='2'/>
+              <DetailHot hotType="2" />
             </div>
           </div>
         </div>
@@ -127,9 +137,9 @@ const getDetail = async () => {
   goodDetail.value = res.result;
 };
 
-onMounted(()=>{
-    getDetail();
-})
+onMounted(() => {
+  getDetail();
+});
 </script>
 <style scoped lang='scss'>
 .xtx-goods-page {

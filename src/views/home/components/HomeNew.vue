@@ -3,7 +3,8 @@
     <HomePanel :title="title" :subTitle="subTitle">
       <ul class="new-good">
         <li v-for="item in freshGoods" :key="item.id">
-          <div class="good-img">
+          <router-link :to="`/detail/${item.id}`">
+                      <div class="good-img">
             <!-- v-img-lazy自定义图片懒加载指令 -->
             <img  alt=""  v-img-lazy="item.picture"/>
           </div>
@@ -11,6 +12,7 @@
             <div class="title">{{ item.name }}</div>
             <div class="good-price">￥{{ item.price }}</div>
           </div>
+          </router-link>
         </li>
       </ul>
     </HomePanel>
