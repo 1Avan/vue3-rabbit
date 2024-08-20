@@ -77,6 +77,7 @@ export const useCartStore = defineStore('cart', () => {
             cartList.value = res.result
         }
     }
+
     //计算购物车件数和总价格
     //总数
     const allCount = computed(() =>

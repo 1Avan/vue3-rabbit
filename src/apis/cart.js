@@ -1,7 +1,7 @@
 import httpInstance from '@/utils/http.js'
 
 //加入购物车
-export const insertCart = ({skuId, count}) => {
+export const insertCart = ({ skuId, count }) => {
     return httpInstance({
         url: '/member/cart',
         method: 'POST',
@@ -23,11 +23,21 @@ export const findNewCartListAPI = () => {
 // 删除购物车
 export const delCartAPI = (ids) => {
     return httpInstance({
-      url: '/member/cart',
-      method: 'DELETE',
-      data: {
-        ids
-      }
+        url: '/member/cart',
+        method: 'DELETE',
+        data: {
+            ids
+        }
 
     })
-  }
+}
+
+
+//合并购物车
+export const mergeCartAPI = (data)=>{
+    return httpInstance({
+        url:'/member/cart/merge',
+        method:'POST',
+        data
+    })
+}
