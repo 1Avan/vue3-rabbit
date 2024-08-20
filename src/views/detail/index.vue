@@ -75,10 +75,12 @@
               <!-- sku组件 -->
               <XtxSku :goods="goodDetail" @change="skuChange"></XtxSku>
               <!-- 数据组件 -->
-
+              <el-input-number v-model="count" :min="1" :max="10" @change="handleChange" />
               <!-- 按钮组件 -->
               <div>
-                <el-button size="large" class="btn"> 加入购物车 </el-button>
+                <el-button size="large" class="btn" @click="addToCar">
+                  加入购物车
+                </el-button>
               </div>
             </div>
           </div>
@@ -128,12 +130,38 @@ import DetailHot from "./components/DetailHot.vue";
 import { getDetailAPI } from "@/apis/detail.js";
 import { onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
+import { useCartStore } from "@/stores/cartStore.js";
 let route = useRoute();
+const cartStore = useCartStore();
+const count = ref(1);
+let skuObj = {};
 const goodDetail = ref({});
+const handleChange = (value) => {
+  count.value = value;
+}
 
-function skuChange(sku){
-  console.log(sku);
-  
+function addToCar() {
+  if (skuObj.skuId) {
+    //规格选择全了,触发action
+    cartStore.addCart({
+      //传参
+      id: goodDetail.value.id, //商品id
+      name: goodDetail.value.name, //商品名称
+      picture: goodDetail.value.mainPictures[0], //图片
+      price: goodDetail.value.price, //最新价格
+      count: count.value, //商品数量
+      skuId: skuObj.skuId,
+      attrsText: skuObj.specsText, //商品规格文本
+      selected: true, //商品是否选中
+    });
+  } else {
+    ElMessage.warning("请选择规格");
+  }
+}
+
+function skuChange(sku) {
+  skuObj = sku;
+  console.log(skuObj);
 }
 const getDetail = async () => {
   let res = await getDetailAPI(route.params.id);

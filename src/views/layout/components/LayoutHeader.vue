@@ -18,16 +18,21 @@
       <div class="search">
         <i class="iconfont icon-search"></i>
         <input type="text" placeholder="搜一搜" />
-        <i class="iconfont icon-cart"></i>
+        <!-- <i class="iconfont icon-cart" @click="showCart"></i> -->
+        <HeaderCart ref="headerCart"></HeaderCart>
       </div>
     </div>
   </header>
 </template>
 <script setup >
 import { getCategoryAPI } from "@/apis/layout";
+import HeaderCart from "./HeaderCart.vue";
 import { onMounted, ref } from "vue";
 import { useCategoryStore } from "@/stores/category.js";
 const categoryStore = useCategoryStore();
+const headerCart = ref();
+const cartRef = ref();
+// headerCart.show()
 
 // 优化：现在由pinia获取数据
 // const categoryList = ref([])

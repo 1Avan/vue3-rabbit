@@ -19,7 +19,6 @@ const subBtn = async (method) => {
       ElMessage({ type: "success", message: "登录成功" });
       // 跳转到首页
       router.replace("/");
-      console.log(res);
     } else {
       console.log("表单验证失败");
     }
