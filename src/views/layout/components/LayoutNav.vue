@@ -22,7 +22,7 @@ function logout(){
       <ul>
         <template v-if="true">
           <li v-if="!userInfo.token"><a href="/login"><i class="iconfont icon-user"></i>登录</a></li>
-          <li v-if="userInfo.token"><a href="javascript:;"><i class="iconfont icon-user"></i>{{userInfo.nickname}}</a></li>
+          <li v-if="userInfo.token"><a href="/member"><i class="iconfont icon-user"></i>{{userInfo.nickname}}</a></li>
           <li v-if="userInfo.token">
             <el-popconfirm title="确认退出吗?" confirm-button-text="确认" 
             cancel-button-text="取消" @confirm="logout()">

@@ -45,8 +45,22 @@ const router = createRouter({
         {
           path: 'pay',
           component: () => import('@/views/pay/index.vue')
+        },
+        {
+          path: 'member',
+          component: () => import('@/views/member/index.vue'),
+          redirect:'/member/userinfo',
+          children: [
+            {
+              path: '/member/order',
+              component: () => import('@/views/member/components/UserOrder.vue')
+            },
+            {
+              path: '/member/userinfo',
+              component: () => import('@/views/member/components/UserInfo.vue')
+            }
+          ]
         }
-        
       ]
     },
     {

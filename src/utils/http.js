@@ -4,7 +4,7 @@ import { useUserStore } from "@/stores/user";
 const httpInstance  = axios.create({
     //axios基础路径
     baseURL: 'http://pcapi-xiaotuxian-front-devtest.itheima.net',
-    timeout: 5000,//5s
+    timeout: 10000,//10s
     headers: {'X-Custom-Header': 'foobar'}
 })
 
